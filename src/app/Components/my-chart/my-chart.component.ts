@@ -72,19 +72,46 @@ export class MyChartComponent implements OnInit {
         let time = new Date(elem.dt * 1000);
         return `${time.getMonth()}/${time.getDate()}/${time.getFullYear()}`
       })
-      let temp = Response.daily.map((elem: any) => {
+      let tempDay = Response.daily.map((elem: any) => {
         let celsius = elem.temp.day - 273
         return celsius.toFixed(0)
       })
-      console.log(temp.length)
+      let tempEvening = Response.daily.map((elem: any) => {
+        let celsius = elem.temp.eve - 273
+        return celsius.toFixed(0)
+      })
+      let tempMorn = Response.daily.map((elem: any) => {
+        let celsius = elem.temp.morn - 273
+        return celsius.toFixed(0)
+      })
+      let tempNight = Response.daily.map((elem: any) => {
+        let celsius = elem.temp.night - 273
+        return celsius.toFixed(0)
+      })
+      console.log(Response)
       const myChart = new Chart('myChart', {
         type: 'line',
         data: {
           labels: date,
           datasets: [{
-              label: 'weather',
+              label: 'Celsius at day',
               borderColor: 'red',
-              data: temp,
+              data: tempDay,
+            },
+            {
+              label: 'Celsius at evening',
+              borderColor: 'blue',
+              data: tempEvening,
+            },
+            {
+              label: 'Celsius at morning',
+              borderColor: 'green',
+              data: tempMorn,
+            },
+            {
+              label: 'Celsius at night',
+              borderColor: 'black',
+              data: tempNight,
             },
 
           ]
@@ -96,7 +123,7 @@ export class MyChartComponent implements OnInit {
                 labels: {
                    
                     font: {
-                        size: 18  
+                        size: 16  
                     }
                 }
             }
