@@ -1,0 +1,13 @@
+#chart-container {
+  display: block;
+  width: 800px;
+  margin: 0 auto;
+  background-color: #fafafa
+}
+
+.main-block {
+  width: 1280px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
